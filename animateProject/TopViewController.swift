@@ -15,14 +15,25 @@ class TopViewController: UIViewController {
     var timer: Timer!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         topCollectionView.delegate = self
         topCollectionView.dataSource = self
         topPage.numberOfPages = images.count
         topCollectionView.isPagingEnabled = true
         createTimer()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToMoreTopView"{
+            let toViewController = segue.destination as! TopMoreViewController
+            let indexPath = sender as! IndexPath
+            let section = images[indexPath.row % images.count]
+            toViewController.sections = images
+            toViewController.section = section
+            toViewController.indexPath = indexPath
+        }
+    }
     func createTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     @objc
     func timerAction(){
@@ -47,13 +58,13 @@ class TopViewController: UIViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         timer.invalidate()
         timer = nil
+        
     }
     //影响拖拽的情况，比如d拖拽到第一个cell，再往左边可以过去，最大同理
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if topCollectionView.contentOffset.x == CGFloat(2 * images.count - 1) * topCollectionView.bounds.width{
+        if self.topCollectionView.contentOffset.x == CGFloat(2 * images.count - 1) * self.topCollectionView.bounds.width{
             self.topCollectionView.contentOffset.x = CGFloat(images.count - 1) * self.topCollectionView.bounds.width
-        }
-        if topCollectionView.contentOffset.x == 0{
+        }else if self.topCollectionView.contentOffset.x == 0{
             self.topCollectionView.contentOffset.x = CGFloat(images.count) * self.topCollectionView.bounds.width
         }
         
@@ -70,6 +81,9 @@ extension TopViewController: UICollectionViewDataSource,UICollectionViewDelegate
         let section = images[indexPath.row % images.count]
         cell.topImageView.image = UIImage(named: section["image"]!)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ToMoreTopView", sender: indexPath)
     }
     
     

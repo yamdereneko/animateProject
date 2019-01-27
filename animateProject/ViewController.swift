@@ -14,8 +14,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
         tableCollectionView.delegate = self
         tableCollectionView.dataSource = self
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToTableView" {
+            let toViewController = segue.destination as! tableViewController
+            let indexpath = sender as! IndexPath
+            let section = images[indexpath.row]
+            toViewController.section = section
+            toViewController.sections = images
+            toViewController.indexPath = indexpath
+        }
     }
 
 }
@@ -32,12 +44,17 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate{
         return cell
         
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ToTableView", sender: indexPath)
+    }
     
     
 }
 extension ViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSet = scrollView.contentOffset.y
+        let navigationHide = offSet <= 0
+        navigationController?.setNavigationBarHidden(navigationHide, animated: true)
         if offSet < 0{
             tableCollectionView.transform = CGAffineTransform(translationX: 0, y: offSet)
         }
