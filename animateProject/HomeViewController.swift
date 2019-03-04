@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableCollectionView: UICollectionView!
     
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
 
 }
-extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate{
+extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -50,7 +50,7 @@ extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate{
     
     
 }
-extension ViewController: UIScrollViewDelegate{
+extension HomeViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSet = scrollView.contentOffset.y
         let navigationHide = offSet <= 0

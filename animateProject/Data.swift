@@ -38,3 +38,62 @@ let fruit = [
     ["image":"meishi_tusi","text":"吐司"],
     ["image":"meishi_xiaweiyiguo","text":"夏威夷果"]
 ]
+let recomment = [
+    [
+        "image": "ios11-animations",
+        "section": "Intro to Storyboards",
+        "part": "Object Library",
+        "content": "On the bottom right, you’ll find the Object Library. That’s the 3rd tab. The Object Library has all the UI components that you can use for your layout. It’s like Insert in Sketch.",
+        "agreeNumber":"12,321",
+        "commentNumber":"3,521"
+    ],
+    [
+        "image": "ios11-colors",
+        "section": "Learn iOS 11 Design",
+        "part": "Large Titles",
+        "content": "More than ever, iOS 11 is going back to its roots. Bold fonts are everywhere. Titles are big and black. Since screens are now about twice as tall as they were, it only makes sense to have large titles. Another reason for large fonts is accessibility. With billions of people using their phone daily from all age groups, it is important to make the content as clear and readable as possible. Accessibility lets users set very large fonts for apps that support it. In iOS 11, all of Apple’s stock apps support that option.  Because of that reason, you’ll find that users are now expecting it.",
+        "agreeNumber":"321",
+        "commentNumber":"32,529"
+    ],
+    [
+        "image": "ios11-cover",
+        "section": "Design for iOS 11",
+        "part": "Layout Margin",
+        "content": "In this Home screen, we use a layout margin of 16px from the left and the right. Like this we ensure that the user interface stay focus in the middle of the screen and doen't look cramped against the edge.",
+        "agreeNumber":"8,952",
+        "commentNumber":"241,092"
+    ],
+    [
+        "image": "ios11-icons",
+        "section": "Status Bar",
+        "part": "Setting Up the Basics",
+        "content": "We need a Status Bar for the top of the screen. You can find the Status Bar in the Insert menu at the Toolbar. If you've installed Sketch Runner, you can search it easily. Go to Plugins > Runner > Run… or press Command + ' (apostrophe) to activate Sketch Runner. Select the Insert tab and type keyword \"status bar black\" and double-click the Symbol and then, place it in the Artboard.",
+        "agreeNumber":"91",
+        "commentNumber":"31"
+    ],
+    [
+        "image": "ios11-inspiration",
+        "section": "Design for iOS 11",
+        "part": "Design+Code Home Screen",
+        "content": "We will be designing the new Design+Code Home screen in this tutorial. It contains a hero image, headline, introduction, call-to-action button, chapter and people section.",
+        "agreeNumber":"490,231",
+        "commentNumber":"213,021"
+    ]
+]
+let icon = [
+    ["image":"Logo-Apple","label":"Apple"],
+    ["image":"Logo-Framer","label":"Framer"],
+    ["image":"Logo-InVision","label":"InVision"],
+    ["image":"Logo-MagicMirror","label":"MagicMirror"],
+    ["image":"Logo-Sketch","label":"Sketch"]
+]
+let message = [
+    ["image":"Avater/avatar-andrew-mccarthy","id":"mccarthy","message":"RUA!!!"],
+    ["image":"Avater/avatar-chris-ching","id":"chris-ching","message":"RUA!!!"],
+    ["image":"Avater/avatar-jean-marc","id":"marc","message":"RUA!!!"],
+    ["image":"Avater/avatar-kenny-chen","id":"chen","message":"RUA!!!"],
+    ["image":"Avater/avatar-martin-rgb","id":"martin","message":"RUA!!!"],
+    ["image":"Avater/avatar-min-sang","id":"min","message":"RUA!!!"],
+    ["image":"Avater/avatar-tom-fox","id":"tom","message":"RUA!!!"],
+    ["image":"Avater/avatar-wayne-sang","id":"sang","message":"RUA!!!"],
+]
