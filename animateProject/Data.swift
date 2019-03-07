@@ -97,3 +97,10 @@ let message = [
     ["image":"Avater/avatar-tom-fox","id":"tom","message":"RUA!!!"],
     ["image":"Avater/avatar-wayne-sang","id":"sang","message":"RUA!!!"],
 ]
+let Friend = [
+    ["Icon":"Avater/avatar-andrew-mccarthy","Name":"mccarthy","Date":"今天18:49","Text":"......................................................","BG":"ios11-animations","Number":"30"],
+    ["Icon":"Avater/avatar-chris-ching","Name":"ching","Date":"今天4:02","Text":"............","BG":"ios11-colors","Number":"44"],
+    ["Icon":"Avater/avatar-jean-marc","Name":"marc","Date":"今天18:49","Text":"............","BG":"ios11-cover","Number":"88"],
+    ["Icon":"Avater/avatar-kenny-chen","Name":"chen","Date":"今天18:49","Text":"............","BG":"ios11-icons","Number":"62"],
+    ["Icon":"Avater/avatar-martin-rgb","Name":"martin","Date":"今天18:49","Text":"............","BG":"ios11-inspiration","Number":"102"]
+]
