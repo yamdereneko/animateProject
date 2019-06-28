@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tableCollectionView: UICollectionView!
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        tableCollectionView.delegate = self
-        tableCollectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,46 +31,31 @@ class ViewController: UIViewController {
     }
 
 }
-extension ViewController: UICollectionViewDataSource,UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tableCell", for: indexPath) as! tableCollectionViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToTableViewCell", for: indexPath) as! tableTableViewCell
         let section = images[indexPath.row]
-        cell.tableImage.image = UIImage(named: section["image"]!)
-        cell.layer.transform = animateCell(cellFrame: cell.frame)
+        cell.tableImageView.image = UIImage(named:section["image"]!)
         return cell
-        
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ToTableView", sender: indexPath)
     }
     
     
 }
-extension ViewController: UIScrollViewDelegate{
+
+extension HomeViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSet = scrollView.contentOffset.y
         let navigationHide = offSet <= 0
         navigationController?.setNavigationBarHidden(navigationHide, animated: true)
         if offSet < 0{
-            tableCollectionView.transform = CGAffineTransform(translationX: 0, y: offSet)
-        }
-        if let collectionView = scrollView as? UICollectionView{
-            for cell in collectionView.visibleCells as! [tableCollectionViewCell]{
-                let indexPath = collectionView.indexPath(for: cell)!
-                let attributes = collectionView.layoutAttributesForItem(at: indexPath)!
-                let cellFrame = collectionView.convert(attributes.frame,to:view)
-                
-                let translationX = cellFrame.origin.x / 5
-                cell.tableImage.transform = CGAffineTransform(translationX: translationX, y: 0)
-                
-                
-                cell.layer.transform = animateCell(cellFrame: cellFrame)
-            }
-            
+            tableView.transform = CGAffineTransform(translationX: 0, y: offSet)
         }
     }
     func animateCell(cellFrame: CGRect) -> CATransform3D{

@@ -8,8 +8,6 @@
 
 import UIKit
 
-class tableCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var tableImage: UIImageView!
-    
+class tableTableViewCell: UITableViewCell {
+    @IBOutlet weak var tableImageView: UIImageView!
 }
